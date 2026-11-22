@@ -1,4 +1,4 @@
-// Taskboard's pure rules: kernel parsing, CPU deltas, ordering, owner
+// Processes' pure rules: kernel parsing, CPU deltas, ordering, owner
 // grouping, the end-task decision table and command-line masking. No I/O
 // here, so every rule is reachable without a machine.
 
