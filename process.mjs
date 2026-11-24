@@ -15,15 +15,15 @@ import {
 const execFileP = promisify(execFile);
 const PORT = Number(process.env.PICODE_EXT_PORT || 8799);
 const EXT_DIR = process.env.PICODE_EXT_DIR || process.cwd();
-const DATA = process.env.PICODE_EXT_DATA || path.join(os.tmpdir(), "taskboard-data");
+const DATA = process.env.PICODE_EXT_DATA || path.join(os.tmpdir(), "processes-data");
 const PICODE_DATA = path.resolve(DATA, "../../..");
 const SECRET = process.env.PICODE_EXT_PROXY_SECRET || "";
 const HOST = process.env.PICODE_URL || "";
 const TOKEN = process.env.PICODE_EXT_TOKEN || "";
 const CA = process.env.PICODE_CA_FILE || "";
 const PLATFORM = process.platform;
-const TEST = process.env.TASKBOARD_TEST === "1";
-const NOWIN = process.env.TASKBOARD_NOWIN === "1";
+const TEST = process.env.PROCESSES_TEST === "1";
+const NOWIN = process.env.PROCESSES_NOWIN === "1";
 let IS_WSL = false;
 if (PLATFORM === "linux") {
   try {
@@ -789,7 +789,7 @@ async function boot() {
     loadSettings().catch(() => {});
     loadAgents().then(refreshTmux).catch(() => {});
   }, 30000).unref?.();
-  server.listen(PORT, "127.0.0.1", () => log("taskboard listening on 127.0.0.1:" + PORT + " (platform " + PLATFORM + ", data " + DATA + ")"));
+  server.listen(PORT, "127.0.0.1", () => log("processes listening on 127.0.0.1:" + PORT + " (platform " + PLATFORM + ", data " + DATA + ")"));
 }
 
 process.on("SIGTERM", () => { try { server.close(); } catch { /* closing */ } process.exit(0); });
@@ -801,7 +801,7 @@ if (TEST) {
   await loadAgents();
   await refreshTmux();
   await sampleNow();
-  server.listen(PORT, "127.0.0.1", () => log("taskboard test listening on 127.0.0.1:" + PORT));
+  server.listen(PORT, "127.0.0.1", () => log("processes test listening on 127.0.0.1:" + PORT));
 } else {
   await boot();
 }

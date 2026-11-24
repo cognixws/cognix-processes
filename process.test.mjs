@@ -36,7 +36,7 @@ function alive(pid) {
 }
 
 before(async () => {
-  data = fs.mkdtempSync(path.join(os.tmpdir(), "taskboard-test-"));
+  data = fs.mkdtempSync(path.join(os.tmpdir(), "processes-test-"));
   extension = spawn(process.execPath, [path.join(HERE, "process.mjs")], {
     cwd: HERE,
     env: {
@@ -47,8 +47,8 @@ before(async () => {
       PICODE_EXT_DATA: data,
       PICODE_URL: "",
       PICODE_EXT_TOKEN: "",
-      TASKBOARD_TEST: "1",
-      TASKBOARD_NOWIN: "1",
+      PROCESSES_TEST: "1",
+      PROCESSES_NOWIN: "1",
     },
     stdio: ["ignore", "pipe", "pipe"],
   });

@@ -1,4 +1,4 @@
-// Taskboard's Windows process helper. It is one-shot by design: the
+// Processes' Windows process helper. It is one-shot by design: the
 // extension's Node process runs it for one snapshot (or one end-task) and
 // lets it exit, so nothing is left behind when the supervisor stops the
 // extension. Stdlib only: kernel32 and psapi through syscall, no cgo, no

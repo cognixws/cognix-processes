@@ -6,8 +6,13 @@ with the agent or workspace that owns each one. Same shape as
 process, one isolated page, a bottom-dock tab and consent bound to the
 content digest.
 
-Its id is `taskboard`: until 0.1.3 it was named Taskboard, and the id and
-this repository keep that name so installs, settings and links carry on.
+Its id is `processes` since 0.2.0. Until 0.1.3 it was named Taskboard,
+with the id `taskboard` and the repository `cognixws/cognix-taskboard`
+(GitHub redirects the old address). The manifest names `taskboard` in
+`formerly`, so installing 0.2.0 over a `taskboard` install updates it in
+place: its settings and workspace switches carry over under the new id.
+If both ids are already installed, COGNIX[WS] refuses the install until
+one of them is removed.
 
 Person-only. No MCP server, no agent capability, no network.
 
@@ -16,7 +21,7 @@ Person-only. No MCP server, no agent capability, no network.
 In COGNIX[WS]: **Extensions → Install**, with the repository URL:
 
 ```
-https://github.com/cognixws/cognix-taskboard
+https://github.com/cognixws/cognix-processes
 ```
 
 It adds the **Processes** tab to the bottom dock and the Processes tile to
@@ -90,7 +95,7 @@ it starts and ends. The helper is built with `npm run helper` (Go,
 ## Files
 
 ```
-picode-extension.json   the reviewed manifest
+picode-extension.json   the reviewed manifest (id, formerly)
 process.mjs             HTTP server, samplers, operations, Host API
 lib.mjs                 pure rules: delta, merge, sort, safety, masking
 ui/processes.html       the dock page (PiCode tokens and fonts)
